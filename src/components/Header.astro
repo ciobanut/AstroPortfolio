@@ -3,16 +3,13 @@ import Navigation from '../components/Navigation.astro';
 import Hamburger from '../components/Hamburger.astro';
 import ThemeIcon from '../components/ThemeIcon.astro';
 ---
-<style>
-	header {
-		display: flex;
-		padding: 5px;
-		margin: 0;
-	}
-</style>
 
-<header>
-	<Hamburger />
-	<Navigation />
-	<ThemeIcon />
+
+<header class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+
+	<div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+		<Hamburger />
+		<Navigation />
+		<ThemeIcon />
+	</div>
 </header>
