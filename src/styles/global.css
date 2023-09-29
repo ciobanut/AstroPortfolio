@@ -80,3 +80,12 @@ html {
 	  display: none;
 	}
   }
+
+  html.dark {
+	background-color: #242237;
+	color: #b2aeda;
+  }
+  
+  .dark .nav-links a {
+	color: #b2aeda;
+  }

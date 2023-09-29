@@ -1,8 +1,11 @@
 ---
 const { frontmatter } = Astro.props;
+import TagsList from '../components/TagsList.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout pageTitle={frontmatter.title}>
+	<TagsList tags={frontmatter.tags} />
+
 <!-- <h1>{frontmatter.title}</h1> -->
 <p>{frontmatter.pubDate.slice(0,10)}</p>
 <p><em>{frontmatter.description}</em></p>
