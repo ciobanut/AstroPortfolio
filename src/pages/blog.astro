@@ -7,8 +7,8 @@ const pageTitle = "Blog";
 <BaseLayout pageTitle={pageTitle}>
 	<p>This is where I will post about my journey learning Astro.</p>
 
-	<ul>
-		{allPosts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
-	</ul>
+	<div class="pt-8">
+		{allPosts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} pubDate={post.frontmatter.pubDate} img={post.frontmatter.image} />)}
+	</div>
 
 </BaseLayout>
