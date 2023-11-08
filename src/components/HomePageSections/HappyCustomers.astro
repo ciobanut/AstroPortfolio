@@ -34,8 +34,9 @@ let allReviews = allWorks.map(
           <article class="bg-white border border-slate-200 rounded-2xl break-inside-avoid-column">
             <div class="p-5">
               <div class="flex items-center mb-3">
-                <a href={review.urlToPost}>
-                  <img class="mr-4 w-12 h-12 rounded-2xl" src={review.avatar} />
+                <a href={review.urlToPost} 
+				aria-label={'View '+review.author+' project'}>
+                  <img class="mr-4 w-12 h-12 rounded-2xl" src={review.avatar} alt={review.author} />
                 </a>
                 <div>
                   <p class="text-lg font-semibold tracking-tight text-slate-900">

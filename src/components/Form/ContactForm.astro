@@ -18,7 +18,13 @@ if (Astro.request.method === "POST") {
 }
 ---
 
-<form class="border border-slate-200 rounded-xl p-6" method="POST" action="/api/sendEmail">
+<form class="border border-slate-200 rounded-xl p-6 relative" method="POST" action="/api/sendEmail">
+
+	<div class="absolute w-full h-full bg-red-200/30 flex items-center justify-center top-0 left-0 z-30 rounded-lg">
+		<span class="text-7xl -rotate-45 text-slate-700 z-40">
+			Comming Soon...
+		</span>
+	</div>
   <div class="space-y-12">
     <div class="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-6">
       <div class="sm:col-span-6 flex justify-between items-center">
@@ -50,6 +56,7 @@ if (Astro.request.method === "POST") {
 			required
             class="block px-2.5 pb-2.5 pt-3 w-full text-sm text-slate-900 bg-transparent rounded-lg border-1 border-slate-300 appearance-none dark:text-white dark:border-slate-600 dark:focus:border-stone-500 focus:outline-none focus:ring-0 focus:border-stone-600 peer"
             placeholder=" "
+			disabled
           />
           <label
             for="name"
@@ -71,6 +78,7 @@ if (Astro.request.method === "POST") {
 			autocomplete="email"
             class="block px-2.5 pb-2.5 pt-3 w-full text-sm text-slate-900 bg-transparent rounded-lg border-1 border-slate-300 appearance-none dark:text-white dark:border-slate-600 dark:focus:border-stone-500 focus:outline-none focus:ring-0 focus:border-stone-600 peer"
             placeholder=" "
+			disabled
           />
           <label
             for="email"
@@ -87,6 +95,7 @@ if (Astro.request.method === "POST") {
             id="message"
             name="message"
             placeholder=" "
+			disabled
             rows="7"
 			required
             class="peer block px-2.5 pb-2.5 pt-3 w-full text-sm text-slate-900 bg-transparent rounded-lg border-1 border-slate-300 appearance-none dark:text-white dark:border-slate-600 dark:focus:border-stone-500 focus:outline-none focus:ring-0 focus:border-stone-600 placeholder:text-slate-400 sm:text-sm sm:leading-6"
