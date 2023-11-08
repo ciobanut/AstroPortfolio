@@ -1,0 +1,30 @@
+---
+import Icon from "astro-icon";
+const { question, answer, id } = Astro.props;
+---
+
+<div
+	class="relative flex flex-wrap justify-between overflow-hidden border border-slate-200/60 rounded-lg"
+>
+	<label
+		class="grow font-normal cursor-pointer p-3 z-10 text-slate-800 pr-8"
+		for={id}
+	>
+		{question}</label
+	>
+	<input
+		class="peer h-0 w-0 appearance-none"
+		type="checkbox"
+		id={id}
+	/>
+	<Icon
+		name="ph:plus"
+		class="absolute duration-200 w-5 h-5 peer-checked:rotate-45 right-3 top-0 transition-all translate-y-2/3 z-0"
+	/>
+
+	<div
+		class="absolute duration-0 opacity-0 p-3 peer-checked:opacity-100 peer-checked:relative peer-checked:scale-y-100 pt-0 scale-y-0 text-slate-500 text-sm"
+	>
+		{answer}
+	</div>
+</div>

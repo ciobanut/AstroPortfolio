@@ -1,53 +1,72 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-
-import '../styles/global.css';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import "../styles/global.css";
+import ArticleWrapper from "@layouts/ArticleWrapper.astro";
+import BaseLayout from "@layouts/Base/BaseLayout.astro";
+import CallToAction from "@components/HomePageSections/CallToAction.astro";
+import Stack from "@components/HomePageSections/MyStack.astro";
+import Faq from "@components/HomePageSections/Faq.astro";
 
 const pageTitle = "About Me";
-
-const identity = {
-  firstName: "Sarah",
-  country: "Canada",
-  occupation: "Technical Writer",
-  hobbies: ["photography", "birdwatching", "baseball"],
-};
-
-const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
-const happy = true;
-const finished = true;
-const goal = 3;
-
-const skillColor = "navy";
-const fontWeight = "300";
-const textCase = "Uppercase";
+import { Image } from "astro:assets";
+import my_avatar from "@assets/img/eu.jpg";
+import desk from "@assets/img/desk.webp";
 ---
+
 <BaseLayout pageTitle={pageTitle}>
+  <ArticleWrapper>
+    <h2 class="text-2xl sm:text-4xl font-bold text-slate-900">About Me</h2>
 
+    <div class="flex flex-col justify-center items-center">
+      <div class="relative mb-16">
+        <Image
+          src={desk}
+          alt="Desk setup"
+          quality={80}
+          width={1628}
+          class="rounded-2xl object-cover w-full aspect-video opacity-90"
+        />
+        <Image
+          src={my_avatar}
+          alt="Tudor"
+          quality={"high"}
+          width={192}
+          height={192}
+          class="absolute bottom-0 left-1/2 w-24 rounded-full translate-y-[50%] translate-x-[-50%] ring-4 ring-white"
+        />
+      </div>
 
-	  
-		<p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
-	  
-		<p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
+      <style>
+        @import url("https://fonts.googleapis.com/css2?family=Comforter");
+      </style>
 
-		<p>Here are a few facts about me:</p>
-		<ul>
-		<li>My name is {identity.firstName}.</li>
-		<li>I live in {identity.country} and I work as a {identity.occupation}.</li>
-		{identity.hobbies.length >= 2 &&
-			<li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
-		}
-		</ul>
-		<p>My skills are:</p>
-		<ul>
-		{skills.map((skill) => <li class="skill">{skill}</li>)}
-		</ul>
-		
-		{happy && <p>I am happy to be learning Astro!</p>}
+      <h3 class="text-4xl font-hand">Tudor Ciobanu</h3>
+    </div>
 
-		{finished && <p>I finished this tutorial!</p>}
-		
-		{goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
-	
+    <div class="flex flex-col gap-3 text-slate-500 leading-loose text-lg">
+      <p>
+        Introducing the full stack developer, Tudor Ciobanu, a master of web
+        development and design. With expertise in both front-end and back-end
+        technologies, Tudor specializes in crafting visually appealing websites
+        with seamless user experiences. Whether it's responsive web design or
+        creating interactive prototypes, he's your go-to expert.
+      </p>
+
+      <p>
+        Tudor is all about the perfect blend of aesthetics and functionality,
+        and he's driven by a passion for innovation. From user-friendly
+        interfaces to pushing the boundaries of web interactions, Tudor excels
+        at turning your ideas into exceptional designs. By choosing Tudor as
+        your full stack developer, you're in for a journey that will take your
+        web and interface designs to the next level. Get ready to be wowed by
+        stunning visuals and immersive user experiences. Let's work together and
+        make your web project a reality!
+      </p>
+    </div>
+  </ArticleWrapper>
+
+  <Stack />
+
+  <Faq />
+
+  <CallToAction />
 </BaseLayout>

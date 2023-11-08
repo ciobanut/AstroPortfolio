@@ -1,0 +1,23 @@
+---
+import Header from '@components/Section/Header.astro'
+import Button from '@components/Form/Button.astro'
+import GetStacks from '@components/Stack/GetStacks.astro'
+---
+
+<!-- My Tech Stack -->
+<section class="rounded-2xl border border-slate-200 p-8">
+	<Header title="My Tech Stack" icon="ph:stack" />
+
+	<GetStacks PostsPerPage="6">
+		<div class="mt-1">
+			<Button
+				href="/stack"
+				title="View Full Stack"
+				icon="ph:arrow-right-bold"
+				variant="link"
+				size="md"
+			/>
+		</div>
+	</GetStacks>
+</section>
+<!-- My Tech Stack -->

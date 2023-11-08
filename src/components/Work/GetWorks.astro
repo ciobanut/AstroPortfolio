@@ -1,0 +1,35 @@
+---
+let { PostsPerPage } = Astro.props
+import WorkPost from '@components/Work/WorkPost.astro'
+const allPosts = await Astro.glob('../../pages/works/*.md')
+
+// Sort posts by publish date and return newest first
+let sortedPosts = allPosts.slice().sort((a, b) => {
+	const dateA = new Date(a.frontmatter.year) as any as number
+	const dateB = new Date(b.frontmatter.year) as any as number
+	return dateB - dateA
+})
+
+if (PostsPerPage) {
+	sortedPosts = sortedPosts.slice(0, PostsPerPage)
+}
+---
+
+<div class="grid gap-5 sm:grid-cols-1 sm:gap-6 md:grid-cols-2">
+	{
+		sortedPosts.map((post) => (
+			<WorkPost
+				stacks={post.frontmatter.stacks}
+				languages={post.frontmatter.languages}
+				key={post.url}
+				url={post.url}
+				description={post.frontmatter.description}
+				title={post.frontmatter.title}
+				year={post.frontmatter.year}
+				img={post.frontmatter.image}
+			/>
+		))
+	}
+
+	<slot />
+</div>

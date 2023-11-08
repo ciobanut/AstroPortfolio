@@ -1,0 +1,36 @@
+---
+import Social from "../../components/Social.astro";
+import Button from "../../components/Form/Button.astro";
+import Icon from "astro-icon";
+---
+
+<footer
+  class="justify-center space-y-2 text-center text-xs text-slate-500 sm:space-y-5 sm:text-left"
+>
+  <div
+    class="mb-3 space-y-5 sm:flex sm:items-center sm:justify-end sm:space-y-0"
+  >
+    <div class="flex justify-center space-x-3">
+      <Social
+        logo="ph:github-logo"
+        link="https://github.com/ciobanut"
+        title="Github Profile"
+      />
+      <Social
+        logo="ph:instagram-logo"
+        link="https://www.instagram.com/careful_web_designer/"
+        title="Instagram Profile"
+      />
+      <Social
+        logo="ph:tiktok-logo"
+        link="https://www.tiktok.com/@ted.web.designer"
+        title="Tiktok Profile"
+      />
+    </div>
+  </div>
+
+  <div class="space-y-3 sm:flex sm:items-center sm:justify-between">
+    <div class="">© 2023 Ciobanu Tudor</div>
+    <div class="">Made in Moldova</div>
+  </div>
+</footer>

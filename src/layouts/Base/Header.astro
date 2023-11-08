@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets";
+import my_avatar from "../../assets/img/eu.jpg";
+---
+
+<!-- Top Header -->
+<header class="border border-slate-100 px-2.5 py-2 rounded-full text-base">
+	<div class="flex justify-between">
+		<a href="/about" class="flex items-center" rel="prefetch">
+			<Image
+				src={my_avatar}
+				alt="Tudor"
+				quality={"high"}
+				width={96}
+				height={96}
+				class="mr-4 w-12 h-12 rounded-full"
+			/>
+			<div>
+				<p class="inline-flex items-center mr-3 text-lg text-slate-700 font-medium">
+					Ciobanu Tudor
+				</p>
+				<p class="text-slate-600 text-xs">Web Developer</p>
+			</div>
+		</a>
+		<div class="sm:flex hidden">
+			<p class="text-slate-950 text-sm text-right pr-4 flex items-center">
+				<span
+					class=" animate-pulse rounded-full h-2.5 w-2.5 bg-green-600 mr-2"
+				></span>
+				 <a href="/contact">
+					Available for Amazing Projects
+				</a>
+			</p>
+		</div>
+	</div>
+</header>
+<!-- Top Header -->

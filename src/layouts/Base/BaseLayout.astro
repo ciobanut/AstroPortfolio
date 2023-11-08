@@ -1,0 +1,73 @@
+---
+import { SEO } from "astro-seo";
+import { ViewTransitions } from 'astro:transitions'
+import { Head } from 'astro-capo'
+
+
+import Header from '../Base/Header.astro'
+import Footer from '../Base/Footer.astro'
+import Navigation from './Navigation/Navigation.astro'
+
+import '../../styles/global.css'
+import config from "../../../config.js";
+
+let { pageTitle = '', pageDescription = ''} = Astro.props
+
+pageTitle += ' - ' + config.websiteName
+
+---
+
+<!doctype html>
+<html transition:animate="none" lang="en">
+	<Head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+
+		<SEO
+		title={pageTitle}
+		description={pageDescription}
+		openGraph={{
+		  basic: {
+			title: pageTitle,
+			type: "A type.",
+			image: "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+		  }
+		}}
+		twitter={{
+		  creator: "@ciobanut"
+		}}
+		extend={{
+		  // extending the default link tags
+		  link: [{ rel: "icon", href: "/favicon.svg", type: "image/svg+xml"}],
+		  // extending the default meta tags
+		  meta: [
+			{
+			  name: "twitter:image",
+			  content: "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+			},
+			{ name: "twitter:title", content: "Tinker Tailor Soldier Spy" },
+			{ name: "twitter:description", content: "Agent" },
+		  ],
+		}}
+		/>
+
+
+		<ViewTransitions />
+	</Head>
+
+	<body class="m-5 bg-slate-50 sm:mx-8">
+		<main
+			class="mx-auto mb-28 flex max-w-4xl flex-col gap-14 rounded-3xl border border-slate-200 bg-white p-5 sm:px-10 sm:py-8"
+
+		>
+			<Header transition:persist="header"/>
+
+			<slot />
+
+			<Footer transition:persist="footer" />
+		</main>
+
+		<Navigation transition:persist="navigation" />
+	</body>
+</html>

@@ -1,0 +1,70 @@
+---
+import { Icon } from "astro-icon";
+import Button from "@components/Form/Button.astro";
+import Tooltip from "@components/Tooltip.astro";
+
+let { url, title, year, img, description, stacks, languages } = Astro.props;
+let short_description = description.replace(/(.{85})..+/, "$1...");
+---
+
+<article class="rounded-2xl border border-slate-200">
+  <a href={url} rel="prefetch">
+    <img
+      class="h-60 w-full rounded-2xl object-cover p-2"
+      alt={img.alt}
+      src={img.url}
+    />
+  </a>
+  <div class="flex flex-col gap-2 p-5 pt-3">
+    <div class="flex flex-col gap-2">
+      <a href={url} rel="prefetch">
+        <h4 class="pr-1 text-xl font-semibold tracking-tight text-slate-800">
+          {title}
+        </h4>
+      </a>
+
+      <div class="flex flex-wrap gap-1.5 align-top">
+        {
+          stacks.map((stack) => (
+            <>
+              <div class=" group relative gap-2 overflow-hidden inline-flex items-center justify-center bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-700 rounded-full text-sm px-2 py-0.5 grow-0 border border-1 border-slate-300">
+                <>
+                  <span class="z-40">{stack}</span>
+                </>
+              </div>
+            </>
+          ))
+        }
+      </div>
+    </div>
+
+    <p class="text-md font-normal text-slate-500">
+      {short_description}
+    </p>
+
+    <div class="flex items-center justify-between">
+      <Button
+        href={url}
+        title="View case"
+        icon="ph:caret-right-bold"
+        size="md"
+        border
+      />
+
+      <div class="flex gap-1.5">
+        {
+          languages.map((language) => (
+            <>
+              <Tooltip title={language} text_size="text-xs">
+                <Icon
+                  name={language}
+                  className="w-7 h-7 text-slate-500  opacity-30 hover:opacity-100 grayscale hover:grayscale-0 hover:transition-all duration-300"
+                />
+              </Tooltip>
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</article>

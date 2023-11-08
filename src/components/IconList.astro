@@ -1,0 +1,15 @@
+---
+const { stacks } = Astro.props;
+import Icon from "astro-icon";
+---
+
+{
+  stacks.map((stack) => (
+    <>
+      <Icon
+        name={stack}
+        className="z-40 w-7 h-7 transition-all duration-300 group-hover:translate-x-1"
+      />
+    </>
+  ))
+}

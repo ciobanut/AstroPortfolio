@@ -1,0 +1,24 @@
+---
+import Button from "@components/Form/Button.astro";
+import Card from "@components/Card.astro";
+---
+
+<Card>
+  <h4 class="text-2xl font-semibold tracking-tight text-slate-900">
+    View all projects
+  </h4>
+  <p class="text-md font-normal text-slate-500">
+    Discover my web portfolio. Explore all projects to see my skills and
+    potential for your project.
+  </p>
+
+  <div>
+    <Button
+      href="/works"
+      title="Explore my Works"
+      icon="ph:caret-right-bold"
+      size="md"
+      variant="primary"
+    />
+  </div>
+</Card>

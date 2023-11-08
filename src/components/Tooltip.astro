@@ -1,0 +1,20 @@
+---
+let { title, text_size = "text-sm" } = Astro.props;
+---
+
+<div class="group relative hover:transition-all duration-300">
+	<slot />
+
+	<!-- Tooltip -->
+	<span
+		class={"-translate-x-1/2 absolute bg-slate-800 group-hover:opacity-100 left-1/2 m-4 mx-auto opacity-0 px-2.5 py-1 rounded-md text-center text-white top-[-90%] tracking-wide transition-opacity translate-y-[-100%] z-40 " +
+			text_size}
+	>
+		<span class="z-50 relative">{title}</span>
+		<div
+			class="absolute bg-slate-800 h-5 rotate-45 bottom-[-5px] w-5 z-10 left-1/2 translate-x-[-50%] rounded-sm"
+		>
+		</div>
+	</span>
+	<!-- Tooltip -->
+</div>

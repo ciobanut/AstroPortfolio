@@ -1,0 +1,19 @@
+---
+import BaseLayout from "@layouts/Base/BaseLayout.astro";
+import Header from "@components/Section/Header.astro";
+import ContactForm from "@components/Form/ContactForm.astro";
+
+const pageTitle = "Contact";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <section>
+    <Header
+      title="Let's Get in Touch!"
+      icon="ph:chat-centered-text"
+      desc="Wanna Work Together? I'm just a button click away, I'll be happy to help you with your Website Development!"
+    />
+
+    <ContactForm />
+  </section>
+</BaseLayout>

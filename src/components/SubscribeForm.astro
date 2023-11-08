@@ -1,0 +1,23 @@
+---
+import Button from "@components/Form/Button.astro";
+import { Icon } from 'astro-icon'
+---
+<form action="" class="col-span-7 flex items-center gap-3 sm:flex-row">
+  <div class="relative w-full sm:w-auto">
+    <input
+      type="text"
+      id="news_email"
+      class="border-1 peer block w-full appearance-none rounded-lg border-slate-300 bg-transparent px-2.5 pb-2.5 pt-3 text-sm text-slate-900 focus:border-stone-600 focus:outline-none focus:ring-0"
+      placeholder=" "
+    />
+    <label
+      for="news_email"
+      class="peer-focus: absolute left-1 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-white px-2 text-sm text-slate-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-stone-600"
+      >Subscribe to Newsletter</label
+    >
+  </div>
+
+  <Button type="submit" title="Subscribe" variant="primary" size="md">
+    <Icon name="ph:envelope-open" class="h-4 w-4" />
+  </Button>
+</form>

@@ -1,0 +1,46 @@
+---
+import HandIcon from "@components/icons/AnimatedHandIcon.astro";
+import Button from "@components/Form/Button.astro";
+---
+
+<!-- Hero Section -->
+<section class="flex flex-col gap-3">
+  <div>
+    <HandIcon />
+  </div>
+
+  <h2 class="text-2xl font-bold text-slate-900 sm:text-4xl">
+    Hi. I'm Tudor, a Web Developer from <span
+      class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary-700 to-primary-400"
+    >
+      Moldova
+    </span>!
+  </h2>
+  <p
+    class="text-md font-normal leading-relaxed text-slate-600 sm:text-xl sm:leading-loose"
+  >
+    Greetings! I'm Tudor, a proficient professional well-versed in Laravel, PHP,
+    and WordPress. With extensive experience in developing responsive websites
+    using these platforms, I'm equally accomplished at creating dynamic and
+    engaging web solutions.
+  </p>
+
+  <div class="space-x-4">
+    <Button
+      href="/about"
+      title="About Me"
+      icon="ph:arrow-right-bold"
+      variant="primary"
+      size="lg"
+    />
+
+    <Button
+      href="/contact"
+      title="Contact Me"
+      icon="ph:arrow-right-bold"
+      variant="secondary"
+      size="lg"
+    />
+  </div>
+</section>
+<!-- Hero Section -->

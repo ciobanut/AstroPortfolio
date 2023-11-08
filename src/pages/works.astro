@@ -1,0 +1,29 @@
+---
+import BaseLayout from "@layouts/Base/BaseLayout.astro";
+import CallToAction from "@components/HomePageSections/CallToAction.astro";
+import Stack from "@components/HomePageSections/MyStack.astro";
+import Header from "@components/Section/Header.astro";
+import GetWorks from "@components/Work/GetWorks.astro";
+const allPosts = await Astro.glob("../pages/works/*.md");
+
+const stacks = [
+  ...new Set(allPosts.map((post) => post.frontmatter.stacks).flat()),
+];
+const pageTitle = "Projects";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <section>
+    <Header
+      title="Projects I've Worked On!"
+      icon="ph:briefcase"
+      desc="Some of my works."
+    />
+
+    <GetWorks />
+  </section>
+
+  <Stack />
+
+  <CallToAction />
+</BaseLayout>

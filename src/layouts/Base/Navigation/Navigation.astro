@@ -1,0 +1,53 @@
+---
+import NavigationItem from "./NavigationItem.astro"
+import DarkModeToggler from "../../../components/DarkModeToggler.astro";
+
+---
+
+<!-- Navigation -->
+<nav
+	class="bg-white/60 border border-white/60 bottom-6 fixed flex gap-2 justify-center left-1/2 translate-x-[-50%] p-2 rounded-2xl text-slate-500 drop-shadow-2xl backdrop-blur-md backdrop-brightness-125 z-50"
+>
+
+	<NavigationItem href="/" title="Home" icon_name="ph:house" />
+	<NavigationItem href="/about" title="About" icon_name="ph:user-circle" />
+	<NavigationItem href="/works" title="Projects" icon_name="ph:briefcase" />
+	<NavigationItem href="/stack" title="Stack" icon_name="ph:stack" />
+	<NavigationItem href="/contact" title="Contact" icon_name="ph:address-book" />
+
+</nav>
+<!-- Navigation -->
+
+
+	<!-- Add "active" class to the menu item -->
+	<script>
+
+		const setActiveClass = () => {
+			const links = document.querySelectorAll("nav a"); 
+
+			const updateActiveClass = () => {
+				const currentURL = window.location.pathname;
+				links.forEach((link) => {
+					const linkHref = link.getAttribute("href");
+					if (
+						currentURL === linkHref ||
+						(currentURL === `${linkHref}/` && linkHref !== "/")
+					) {
+						link.classList.add("active");
+					} else {
+						link.classList.remove("active");
+					}
+				});
+			};
+
+			// Update the active class on initial render
+			updateActiveClass();
+
+			// Update the active class on navigation changes
+			window.addEventListener("popstate", updateActiveClass);
+		};
+
+		setActiveClass();
+  document.addEventListener('astro:after-swap', setActiveClass);
+
+	</script>

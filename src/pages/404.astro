@@ -1,0 +1,23 @@
+---
+
+import BaseLayout from "@layouts/Base/BaseLayout.astro";
+import Header from "@components/Section/Header.astro";
+import Button from "@components/Form/Button.astro";
+import Icon from "astro-icon";
+
+const pageTitle = "404 Not Found";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <section class="text-center my-10 sm:my-20 space-y-5">
+    <h3 class="text-9xl font-thin text-primary-100 text-center">404</h3>
+    <Header
+      title="Not Found"
+      desc="I think you have the wrong link. Where did you get it from? 🤔"
+    />
+
+    <Button href="/" title="Back to Homepage" variant="secondary" size="lg">
+      <Icon name="ph:house-bold" class="w-5 h-5 -mr-1" />
+    </Button>
+  </section>
+</BaseLayout>

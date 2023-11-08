@@ -1,13 +1,12 @@
 ---
-const { platform, username } = Astro.props;
+import { Icon } from "astro-icon";
+const { logo, link, title } = Astro.props;
 ---
-<a href={`https://www.${platform}.com/${username}`}>{platform}</a>
 
-<style>
-	a {
-	  padding: 0.5rem 1rem;
-	  color: white;
-	  background-color: #4c1d95;
-	  text-decoration: none;
-	}
-  </style>
+<a
+  href={link}
+  class="text-slate-500 hover:text-slate-900"
+  aria-label={"Open page " + title}
+>
+  <Icon name={logo} class="w-6 h-6" />
+</a>

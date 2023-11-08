@@ -1,0 +1,22 @@
+---
+let { PostsPerPage } = Astro.props;
+import FaqCard from "@components/Faq/FaqCard.astro";
+
+import config from "../../../config.js";
+let faqs = config.faq;
+
+if (PostsPerPage) {
+	faqs = faqs.slice(0, PostsPerPage);
+}
+let id = 0;
+---
+
+{
+	faqs.map((faq) => (
+		<>
+			<FaqCard question={faq.question} answer={faq.answer} id={id++} />
+		</>
+	))
+}
+
+<slot />

@@ -1,0 +1,27 @@
+---
+let { PostsPerPage } = Astro.props;
+import StackCard from "@components/Stack/StackCard.astro";
+
+import config from "../../../config.js";
+let stacks = config.stack;
+
+if (PostsPerPage) {
+  stacks = stacks.slice(0, PostsPerPage);
+}
+---
+
+<div class="gap-3 grid sm:grid-cols-2 w-full">
+  {
+    stacks.map((stack) => (
+      <>
+        <StackCard
+          iconName={stack.iconName}
+          title={stack.title}
+          description={stack.description}
+        />
+      </>
+    ))
+  }
+
+  <slot />
+</div>

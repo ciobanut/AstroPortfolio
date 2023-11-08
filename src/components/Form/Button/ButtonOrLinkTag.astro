@@ -1,0 +1,19 @@
+---
+const { href, className, type } = Astro.props
+---
+
+{
+	href ? (
+		<>
+			<a href={href} class={className} rel="prefetch">
+				<slot />
+			</a>
+		</>
+	) : (
+		<>
+			<button type={type} class={className}>
+				<slot />
+			</button>
+		</>
+	)
+}

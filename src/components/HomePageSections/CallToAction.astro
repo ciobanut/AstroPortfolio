@@ -1,0 +1,75 @@
+---
+import { Icon } from 'astro-icon'
+import Button from '@components/Form/Button.astro'
+---
+
+<!-- Call to Action -->
+<section
+	class="relative z-10 flex flex-col items-center gap-3 overflow-hidden rounded-2xl border border-slate-200 p-10 text-center"
+>
+	<h5 class="text-xs font-bold">Say hello 👋</h5>
+	<h3 class="text-3xl font-bold">Let's Connect!</h3>
+	<p class="max-w-[400px] text-slate-500"  style="text-wrap: balance">
+		Let's create something unique together! Here's how you can reach out to me!
+	</p>
+	<div class="mt-3 flex justify-center gap-3 max-[400px]:w-full max-[400px]:flex-col">
+		<Button href="#" title="Telegram" size="md" border>
+			<Icon name="ph:telegram-logo" class="h-4 w-4" />
+		</Button>
+
+		<Button href="#" title="Email Me" size="md" border>
+			<Icon name="ph:envelope-simple" class="h-4 w-4" />
+		</Button>
+
+	</div>
+
+	<svg
+		class="absolute left-0 top-0 -z-10 h-96 w-96 translate-x-[-30%] translate-y-[-30%] blur-3xl"
+		viewBox="0 0 1000 1000"
+		xmlns="http://www.w3.org/2000/svg"
+	>
+		<defs>
+			<linearGradient id="b" gradientTransform="rotate(120 .5 .5)">
+				<stop offset="0%" stop-color="#A9C9FF"></stop>
+				<stop offset="100%" stop-color="#FFBBEC"></stop>
+			</linearGradient>
+			<clipPath id="a">
+				<path
+					fill="currentColor"
+					d="M780.5 708.5Q741 917 513 894.5T162.5 686Q40 500 204.5 387T517 244q148-30 225.5 113t38 351.5Z"
+				></path>
+			</clipPath>
+		</defs>
+		<g clip-path="url(#a)">
+			<path
+				fill="url(#b)"
+				d="M780.5 708.5Q741 917 513 894.5T162.5 686Q40 500 204.5 387T517 244q148-30 225.5 113t38 351.5Z"
+			></path>
+		</g>
+	</svg>
+
+	<svg
+		class="absolute bottom-0 right-0 -z-10 h-96 w-96 translate-x-[30%] translate-y-[30%] blur-3xl"
+		viewBox="0 0 1000 1000"
+		xmlns="http://www.w3.org/2000/svg"
+	>
+		<defs>
+			<linearGradient id="b" gradientTransform="rotate(240 .5 .5)">
+				<stop offset="0%" stop-color="#A9C9FF"></stop>
+				<stop offset="100%" stop-color="#FFBBEC"></stop>
+			</linearGradient>
+			<clipPath id="a">
+				<path
+					fill="currentColor"
+					d="M850.5 687Q716 874 517.5 844t-256-187Q204 500 297 404.5T541 238q151-71 297.5 95.5t12 353.5Z"
+				></path>
+			</clipPath>
+		</defs>
+		<g clip-path="url(#a)">
+			<path
+				fill="url(#b)"
+				d="M850.5 687Q716 874 517.5 844t-256-187Q204 500 297 404.5T541 238q151-71 297.5 95.5t12 353.5Z"
+			></path>
+		</g>
+	</svg>
+</section>
