@@ -1,15 +1,14 @@
 ---
-const { href, title, icon_name } = Astro.props;
-import { Icon } from "astro-icon";
-import Tooltip from "@components/Tooltip.astro";
+const { href, title, icon_name } = Astro.props
+import { Icon } from 'astro-icon'
+import Tooltip from '@components/Tooltip.astro'
 ---
 
 <Tooltip title={title} text_size="text-sm">
 	<a
-		class="block px-2 py-2 border border-slate-400/20 hover:border-slate-500/50 hover:text-slate-950 rounded-xl"
+		class="block rounded-xl border border-slate-400/20 px-2 py-2 hover:border-slate-500/50 hover:text-slate-950"
 		href={href}
-		rel="prefetch"
-		aria-label={"Open page " + title}
+		aria-label={'Open page ' + title}
 	>
 		<Icon name={icon_name} class="w-8" />
 	</a>

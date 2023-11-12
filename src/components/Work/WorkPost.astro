@@ -8,7 +8,7 @@ let short_description = description ? description.replace(/(.{85})..+/, "$1...")
 ---
 
 <article class="rounded-2xl border border-slate-200">
-  <a href={url} rel="prefetch">
+  <a href={url} >
     <img
       class="h-60 w-full rounded-2xl object-cover p-2"
       alt={img.alt}
@@ -17,7 +17,7 @@ let short_description = description ? description.replace(/(.{85})..+/, "$1...")
   </a>
   <div class="flex flex-col gap-2 p-5 pt-3">
     <div class="flex flex-col gap-2">
-      <a href={url} rel="prefetch">
+      <a href={url} >
         <h4 class="pr-1 text-xl font-semibold tracking-tight text-slate-800">
           {title}
         </h4>

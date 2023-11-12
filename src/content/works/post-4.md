@@ -5,7 +5,7 @@ isDraft: false
 pubDate: '12-11-2023'
 year: 2023
 image:
-  src: '../../../src/assets/img/desk.webp'
+  src: '/images/post-1.jpg'
   alt: 'The word “astro” against an illustration of planets and stars.'
 client: 'MMM Travel'
 business_niche: 'corporate'
