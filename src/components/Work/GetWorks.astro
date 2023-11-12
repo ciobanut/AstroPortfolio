@@ -1,32 +1,30 @@
 ---
-let { PostsPerPage } = Astro.props
+import { getCollection } from 'astro:content'
+import { Image } from 'astro:assets'
 import WorkPost from '@components/Work/WorkPost.astro'
-const allPosts = await Astro.glob('../../pages/works/*.md')
+let { PostsPerPage } = Astro.props
 
-// Sort posts by publish date and return newest first
-let sortedPosts = allPosts.slice().sort((a, b) => {
-	const dateA = new Date(a.frontmatter.year) as any as number
-	const dateB = new Date(b.frontmatter.year) as any as number
-	return dateB - dateA
-})
-
-if (PostsPerPage) {
-	sortedPosts = sortedPosts.slice(0, PostsPerPage)
-}
+const works = (
+	await getCollection('works', ({ data }) => {
+		return data.isDraft !== true
+	})
+)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, PostsPerPage)
 ---
 
 <div class="grid gap-5 sm:grid-cols-1 sm:gap-6 md:grid-cols-2">
 	{
-		sortedPosts.map((post) => (
+		works.map((work) => (
 			<WorkPost
-				stacks={post.frontmatter.stacks}
-				languages={post.frontmatter.languages}
-				key={post.url}
-				url={post.url}
-				description={post.frontmatter.description}
-				title={post.frontmatter.title}
-				year={post.frontmatter.year}
-				img={post.frontmatter.image}
+				url={`/works/${work.slug}`}
+				stacks={work.data.stacks}
+				languages={work.data.languages}
+				key={work.id}
+				description={work.data.description}
+				title={work.data.title}
+				year={work.data.year}
+				img={work.data.image}
 			/>
 		))
 	}

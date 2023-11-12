@@ -1,20 +1,24 @@
 ---
-layout: ../../layouts/SingleWorkLayout.astro
-title: "WordPress plugin Project"
+layout: '../../layouts/SingleWorkLayout.astro'
+title: 'WordPress plugin Project 4-01-2020'
+isDraft: false
+pubDate: '4-01-2020'
 year: 2023
-description: Incorporated all necessary ecommerce features, ultimately delivering a stunning user experience. From seamless navigation to secure payment processing and captivating visuals, every essential element was seamlessly and nicely integrated.
-client: Bekma Travel
-business niche: corporate
-deadline: one month
-
 image:
-  url: images/working.avif
-  alt: "The full Astro logo."
-stacks: ["wordpress"]
-languages: ["php", "mysql", "oauth"]
-
+  src: 'images/working.avif'
+  alt: 'The full Astro logo.'
+description: 'Incorporated all necessary ecommerce features, ultimately delivering a stunning user experience. From seamless navigation to secure payment processing and captivating visuals, every essential element was seamlessly and nicely integrated.'
+client: 'Supreme Veritas'
+business_niche: 'corporate'
+deadline: 'one month'
+stacks:
+  - 'wordpress'
+languages:
+  - 'php'
+  - 'mysql'
+  - 'oauth'
 review:
-  author: Roma
+  author: Mustafa
   avatar: ../../../src/assets/img/eu.jpg
   message: User-friendly customization and responsiveness ensure seamless experiences on any device. It saves time and streamlines my workflow.
 ---

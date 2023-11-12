@@ -1,57 +1,44 @@
 ---
-import HeaderSection from "@components/Section/Header.astro";
-const allWorks = await Astro.glob("../../pages/works/*.md");
-let reviews = [];
+import { getCollection } from 'astro:content'
+import HeaderSection from '@components/Section/Header.astro'
 
-// allWorks.map(
-//   (work) =>
-//     work.frontmatter.review && // check if review is not null
-//     reviews.push(work.frontmatter.review, {client:work.frontmatter.client} ) // append this review to reviews array
-// );
-
-let allReviews = allWorks.map(
-  (work) =>
-    work.frontmatter.review && {
-      // check if review is not null
-      author: work.frontmatter.review.author,
-      avatar: work.frontmatter.review.avatar,
-      message: work.frontmatter.review.message,
-      client: work.frontmatter.client,
-      urlToPost: work.url,
-    }
-);
+const works = await getCollection('works', ({ data }) => {
+	return data.isDraft !== true && 'review' in data
+})
 ---
 
 <!-- Happy Customers! -->
 <section>
-  <HeaderSection title="Happy Customers!" icon="ph:chat-centered-text" />
+	<HeaderSection title="Happy Customers!" icon="ph:chat-centered-text" />
 
-  <div class="sm:columns-2 sm:gap-6 sm:space-y-6 space-y-5">
-    {
-      allReviews
-        .filter((review) => review !== null) // Filter out null values
-        .map((review) => (
-          <article class="bg-white border border-slate-200 rounded-2xl break-inside-avoid-column">
-            <div class="p-5">
-              <div class="flex items-center mb-3">
-                <a href={review.urlToPost} 
-				aria-label={'View '+review.author+' project'}>
-                  <img class="mr-4 w-12 h-12 rounded-2xl" src={review.avatar} alt={review.author} />
-                </a>
-                <div>
-                  <p class="text-lg font-semibold tracking-tight text-slate-900">
-                    <a href={review.urlToPost}> {review.author} </a>
-                  </p>
-                  <p class="text-slate-600 text-xs">{review.author}</p>
-                </div>
-              </div>
-              <span class="mb-3 font-normal text-slate-700">
-                {review.message}
-              </span>
-            </div>
-          </article>
-        ))
-    }
-  </div>
+	<div class="space-y-5 sm:columns-2 sm:gap-6 sm:space-y-6">
+		{
+			works.map((work) => (
+				<article class="break-inside-avoid-column rounded-2xl border border-slate-200 bg-white">
+					<div class="p-5">
+						<div class="mb-3 flex items-center">
+							<a
+								href={`/works/${work.slug}`}
+								aria-label={'View ' + work.data.review.author + ' project'}
+							>
+								<img
+									class="mr-4 h-12 w-12 rounded-2xl"
+									src={work.data.review.avatar}
+									alt={work.data.review.author}
+								/>
+							</a>
+							<div>
+								<p class="text-lg font-semibold tracking-tight text-slate-900">
+									<a href={`/works/${work.slug}`}> {work.data.review.author} </a>
+								</p>
+								<p class="text-xs text-slate-600">{work.data.client}</p>
+							</div>
+						</div>
+						<span class="mb-3 font-normal text-slate-700">{work.data.review.message}</span>
+					</div>
+				</article>
+			))
+		}
+	</div>
 </section>
 <!-- Happy Customers! -->

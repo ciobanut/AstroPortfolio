@@ -1,6 +1,6 @@
 {
 	"name": "portfolio",
-	"type": "",
+	"type": "module",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "astro dev",
@@ -24,6 +24,7 @@
 	"dependencies": {
 		"@astrojs/prefetch": "^0.4.1",
 		"@babel/runtime": "^7.23.2",
+		"@fontsource/comforter": "^5.0.17",
 		"@untitled-ui/icons-react": "^0.1.1",
 		"astro-capo": "github:natemoo-re/astro-capo",
 		"astro-icon": "^0.8.1",

@@ -1,20 +1,281 @@
 {
-  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
-  "frontMatter.framework.id": "astro",
-  "frontMatter.preview.host": "http://localhost:4321",
-  "frontMatter.content.publicFolder": {
-    "path": "src/assets",
-    "relative": true
-  },
-  "frontMatter.extends": [
-    ".frontmatter/starlight/contenttypes.json",
-    ".frontmatter/starlight/pagefolders.json",
-    ".frontmatter/starlight/aside.json"
-  ],
-  "frontMatter.content.pageFolders": [
-    {
-      "title": "customers_reviews",
-      "path": "[[workspace]]/src/pages/customers_reviews"
-    }
-  ]
+	"$schema": "https://frontmatter.codes/frontmatter.schema.json",
+	"frontMatter.framework.id": "astro",
+	"frontMatter.preview.host": "http://localhost:4321",
+	"frontMatter.content.publicFolder": "public",
+	"frontMatter.content.pageFolders": [
+		{
+			"title": "blog",
+			"path": "[[workspace]]/src/content/blog"
+		},
+		{
+			"title": "works",
+			"path": "[[workspace]]/src/content/works"
+		},
+		{
+			"title": "authors",
+			"path": "[[workspace]]/src/content/authors",
+			"contentTypes": ["authors"]
+		}
+	],
+	"frontMatter.taxonomy.contentTypes": [
+		{
+			"name": "default",
+			"pageBundle": false,
+			"previewPath": "'blog'",
+			"filePrefix": null,
+			"clearEmpty": true,
+			"fields": [
+				{
+					"title": "title",
+					"name": "title",
+					"type": "string"
+				},
+				{
+					"title": "description",
+					"name": "description",
+					"type": "string"
+				},
+				{
+					"title": "tags",
+					"name": "tags",
+					"type": "tags"
+				},
+				{
+					"title": "pubDate",
+					"name": "pubDate",
+					"type": "datetime"
+				},
+				{
+					"title": "author",
+					"name": "author",
+					"type": "string"
+				},
+				{
+					"title": "featureImage",
+					"name": "featureImage",
+					"type": "fields",
+					"fields": [
+						{
+							"title": "src",
+							"name": "src",
+							"type": "string"
+						},
+						{
+							"title": "alt",
+							"name": "alt",
+							"type": "string"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "works",
+			"previewPath": "'works'",
+			"pageBundle": false,
+			"clearEmpty": true,
+			"fields": [
+				{
+					"name": "title",
+					"type": "string",
+					"single": true,
+					"required": true
+				},
+				{
+					"name": "isDraft",
+					"type": "boolean",
+					"required": true,
+					"default": true
+				},
+				{
+					"name": "year",
+					"type": "number",
+					"required": true
+				},
+				{
+					"name": "description",
+					"type": "string",
+					"single": true,
+					"required": true
+				},
+				{
+					"name": "business_niche",
+					"type": "string",
+					"single": true,
+					"required": true
+				},
+				{
+					"name": "deadline",
+					"type": "string",
+					"single": true,
+					"required": true
+				},
+				{
+					"name": "image",
+					"type": "fields",
+					"fields": [
+						{
+							"name": "src",
+							"type": "string",
+							"single": true,
+							"required": true
+						},
+						{
+							"name": "alt",
+							"type": "string",
+							"single": true,
+							"required": true,
+							"default": true
+						},
+						{
+							"name": "caption",
+							"type": "string",
+							"single": true,
+							"required": true,
+							"default": true
+						}
+					],
+					"required": true,
+					"default": true
+				},
+				{
+					"name": "stacks",
+					"type": "list",
+					"required": true
+				},
+				{
+					"name": "languages",
+					"type": "list",
+					"required": true
+				},
+				{
+					"name": "review",
+					"type": "fields",
+					"fields": [
+						{
+							"name": "author",
+							"type": "string",
+							"single": true,
+							"required": true,
+							"default": true
+						},
+						{
+							"name": "avatar",
+							"type": "string",
+							"single": true,
+							"required": true,
+							"default": true
+						},
+						{
+							"name": "message",
+							"type": "string",
+							"single": true,
+							"required": true,
+							"default": true
+						}
+					],
+					"required": true
+				}
+			]
+		},
+		{
+			"name": "authors",
+			"previewPath": "'authors'",
+			"pageBundle": false,
+			"clearEmpty": true,
+			"fields": [
+				{
+					"name": "name",
+					"type": "string",
+					"single": true,
+					"required": true
+				},
+				{
+					"name": "email",
+					"type": "string",
+					"single": true,
+					"required": true
+				},
+				{
+					"name": "Twitter",
+					"type": "string",
+					"single": true,
+					"required": true,
+					"default": true
+				},
+				{
+					"name": "GitHub",
+					"type": "string",
+					"single": true,
+					"required": true,
+					"default": true
+				}
+			]
+		},
+		{
+			"name": "blog",
+			"previewPath": "'blog'",
+			"pageBundle": false,
+			"clearEmpty": true,
+			"fields": [
+				{
+					"name": "title",
+					"type": "string",
+					"single": true,
+					"required": true
+				},
+				{
+					"name": "description",
+					"type": "string",
+					"single": true,
+					"required": true
+				},
+				{
+					"name": "tags",
+					"type": "list",
+					"required": true
+				},
+				{
+					"name": "author",
+					"type": "choice",
+					"choices": ["David", "Monica"],
+					"required": true
+				},
+				{
+					"name": "isDraft",
+					"type": "boolean",
+					"required": true,
+					"default": true
+				},
+				{
+					"name": "featureImage",
+					"type": "fields",
+					"fields": [
+						{
+							"name": "src",
+							"type": "string",
+							"single": true,
+							"required": true
+						},
+						{
+							"name": "alt",
+							"type": "string",
+							"single": true,
+							"required": true,
+							"default": true
+						},
+						{
+							"name": "caption",
+							"type": "string",
+							"single": true,
+							"required": true,
+							"default": true
+						}
+					],
+					"required": true
+				}
+			]
+		}
+	]
 }

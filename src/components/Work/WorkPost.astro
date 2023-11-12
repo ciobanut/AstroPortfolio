@@ -4,7 +4,7 @@ import Button from "@components/Form/Button.astro";
 import Tooltip from "@components/Tooltip.astro";
 
 let { url, title, year, img, description, stacks, languages } = Astro.props;
-let short_description = description.replace(/(.{85})..+/, "$1...");
+let short_description = description ? description.replace(/(.{85})..+/, "$1...") : '';
 ---
 
 <article class="rounded-2xl border border-slate-200">
@@ -12,7 +12,7 @@ let short_description = description.replace(/(.{85})..+/, "$1...");
     <img
       class="h-60 w-full rounded-2xl object-cover p-2"
       alt={img.alt}
-      src={img.url}
+      src={img.src}
     />
   </a>
   <div class="flex flex-col gap-2 p-5 pt-3">
@@ -38,7 +38,7 @@ let short_description = description.replace(/(.{85})..+/, "$1...");
       </div>
     </div>
 
-    <p class="text-md font-normal text-slate-500">
+    <p class="text-md font-normal text-slate-600">
       {short_description}
     </p>
 
