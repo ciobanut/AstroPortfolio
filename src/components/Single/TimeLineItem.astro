@@ -1,0 +1,19 @@
+---
+const { date, title, desc } = Astro.props
+---
+
+<!-- Item -->
+<div class="group relative py-6 pl-8 sm:pl-48">
+	<!-- Vertical line (::before) ~ Date ~ Title ~ Circle marker (::after) -->
+	<div
+		class="mb-1 flex flex-col items-start before:absolute before:left-2 before:h-full before:-translate-x-1/2 before:translate-y-3 before:self-start before:bg-slate-200 before:px-px after:absolute after:left-2 after:box-content after:h-2 after:w-2 after:-translate-x-1/2 after:translate-y-1.5 after:rounded-full after:border-4 after:border-secondary-50 after:bg-secondary-500 group-last:before:hidden sm:flex-row sm:before:left-0 sm:before:ml-[10.5rem] sm:after:left-0 sm:after:ml-[10.5rem]"
+	>
+		<time
+			class="left-0 mb-3 inline-flex h-6 w-36 translate-y-0.5 items-center justify-center rounded-full bg-emerald-100 text-xs font-semibold uppercase text-emerald-600 sm:absolute sm:mb-0"
+			>{date}</time
+		>
+		<div class="text-xl font-bold text-slate-900">{title}</div>
+	</div>
+	<!-- Content -->
+	<div class="text-slate-500">{desc}</div>
+</div>

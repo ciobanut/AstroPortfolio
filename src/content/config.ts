@@ -7,7 +7,10 @@ const works = defineCollection({
 		pubDate: z.string().transform((str) => new Date(str)),
 		year: z.number(),
 		description: z.string(),
-		client: z.string(),
+		client: z.object({
+			name: z.string(),
+			logo: z.string()
+		}),
 		business_niche: z.string(),
 		deadline: z.string(),
 		image: z
@@ -18,7 +21,7 @@ const works = defineCollection({
 			})
 			.optional(),
 		stacks: z.array(z.string()),
-		languages: z.array(z.string()),
+		languages: z.array(z.string()).optional(),
 		review: z
 			.object({
 				author: z.string().optional(),

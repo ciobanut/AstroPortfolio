@@ -93,6 +93,11 @@ export default {
 
 	faq: [
 		{
+			question: 'What services do you offer exactly?',
+			answer:
+				'I studied at the Informatics College in Chisinau. There I took my first steps in the world of programming. I took courses and made personal projects and websites for my clients on a freelance basis. '
+		},
+		{
 			question: 'What education do you have?',
 			answer:
 				'I studied at the Informatics College in Chisinau. There I took my first steps in the world of programming. I took courses and made personal projects and websites for my clients on a freelance basis. '

@@ -1,4 +1,12 @@
 .active,
 .active:hover {
-  @apply bg-secondary-500 text-white hover:text-white border-secondary-500 border hover:border-secondary-500;
+	@apply border border-secondary-500 bg-secondary-500 text-white hover:border-secondary-500 hover:text-white;
+}
+
+::selection {
+	@apply bg-primary-100 text-primary-700;
+}
+
+::-moz-selection {
+	@apply bg-primary-100 text-primary-700;
 }

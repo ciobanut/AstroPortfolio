@@ -1,9 +1,6 @@
 ---
 import { SEO } from "astro-seo";
 import { ViewTransitions } from 'astro:transitions'
-import { Head } from 'astro-capo'
-
-
 import Header from '../Base/Header.astro'
 import Footer from '../Base/Footer.astro'
 import Navigation from './Navigation/Navigation.astro'
@@ -30,24 +27,13 @@ pageTitle += ' - ' + config.websiteName
 		openGraph={{
 		  basic: {
 			title: pageTitle,
-			type: "A type.",
-			image: "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+			type: "website",
+			image: "/favicon.svg",
 		  }
 		}}
-		twitter={{
-		  creator: "@ciobanut"
-		}}
 		extend={{
-		  // extending the default link tags
-		  link: [{ rel: "icon", href: "/favicon.svg", type: "image/svg+xml"}],
 		  // extending the default meta tags
 		  meta: [
-			{
-			  name: "twitter:image",
-			  content: "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
-			},
-			{ name: "twitter:title", content: "Tinker Tailor Soldier Spy" },
-			{ name: "twitter:description", content: "Agent" },
 		  ],
 		}}
 		/>

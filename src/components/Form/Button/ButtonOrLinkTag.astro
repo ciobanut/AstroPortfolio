@@ -1,17 +1,17 @@
 ---
-const { href, className, type } = Astro.props
+const { href, className, type, ...props } = Astro.props
 ---
 
 {
 	href ? (
 		<>
-			<a href={href} class={className} >
+			<a href={href} class={className} {...props}>
 				<slot />
 			</a>
 		</>
 	) : (
 		<>
-			<button type={type} class={className}>
+			<button type={type} class={className} {...props}>
 				<slot />
 			</button>
 		</>

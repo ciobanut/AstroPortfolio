@@ -1,0 +1,31 @@
+---
+import Button from '@components/Form/Button.astro'
+import { Icon } from 'astro-icon'
+import ViewAllProjectsLink from '@components/HomePageSections/ViewAllProjectsLink.astro'
+import GetWorks from '@components/Work/GetWorks.astro'
+//const allPosts = await Astro.glob("../../pages/works/*.md");
+const PostsPerPage = 3
+
+import { getCollection } from 'astro:content'
+const works = await getCollection('works', ({ data }) => {
+	return data.isDraft !== true
+})
+---
+
+<!-- Related Works -->
+<section class="flex flex-col gap-3">
+	<header class="flex items-center justify-between">
+		<div class="flex items-center">
+			<Icon name="ph:briefcase" class="mr-3 h-6 w-6 text-primary-500" />
+
+			<h3 class="text-xl font-bold text-primary-950 sm:text-xl">Related Works</h3>
+		</div>
+
+		<Button href="/works" title="View All" icon="ph:arrow-right-bold" variant="link" size="md" />
+	</header>
+
+	<GetWorks PostsPerPage={PostsPerPage}>
+		{works.length > PostsPerPage && <ViewAllProjectsLink />}
+	</GetWorks>
+</section>
+<!-- Related Works -->

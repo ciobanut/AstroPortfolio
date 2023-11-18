@@ -31,7 +31,7 @@ const works = await getCollection('works', ({ data }) => {
 								<p class="text-lg font-semibold tracking-tight text-slate-900">
 									<a href={`/works/${work.slug}`}> {work.data.review.author} </a>
 								</p>
-								<p class="text-xs text-slate-600">{work.data.client}</p>
+								<p class="text-xs text-slate-600">{work.data.client.name}</p>
 							</div>
 						</div>
 						<span class="mb-3 font-normal text-slate-700">{work.data.review.message}</span>
