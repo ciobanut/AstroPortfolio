@@ -1,22 +1,29 @@
 ---
-import "../styles/global.css";
-import BaseLayout from "@layouts/Base/BaseLayout.astro";
-import CallToAction from "@components/HomePageSections/CallToAction.astro";
-import Header from "@components/Section/Header.astro";
-import GetStacks from "@components/Stack/GetStacks.astro";
+import '../styles/global.css'
+import BaseLayout from '@layouts/Base/BaseLayout.astro'
+import CallToAction from '@components/HomePageSections/CallToAction.astro'
+import Header from '@components/Section/Header.astro'
+import GetStacks from '@components/Stack/GetStacks.astro'
 
-const pageTitle = "About Me";
+const pageTitle = 'About Me'
+
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <section>
-    <Header
-      title="My Tech Stack"
-      icon="ph:stack"
-      desc="I work with next tools:"
-    />
+	<section>
+		<Header title="My Tech Stack" icon="ph:stack" desc="I work with next tools:" />
 
-    <GetStacks />
-  </section>
-  <CallToAction />
+		<div class="prose py-5">
+			<!-- TODO: distribute all stack by categories:  -->
+			distribute all stack by categories: 
+			<ol>
+				<li>I know strong</li>
+				<li>I know enoth, I'm learning</li>
+				<li>I want to learn and practice</li>
+			</ol>
+		</div>
+
+		<GetStacks />
+	</section>
+	<CallToAction />
 </BaseLayout>
