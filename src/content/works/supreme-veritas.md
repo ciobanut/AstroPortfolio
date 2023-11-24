@@ -22,7 +22,7 @@ languages:
   - 'php'
 review:
   author: 'Ahmed'
-  avatar: '/images/ahmed.png'
+  avatar: '/images/ahmed.avif'
   message: "From start to finish, Tudor has been an incredible support, going above and beyond our expectations every step of the way. What stood out was not just the personal and friendly experience, but also Tudor's knack for capturing and expressing our core messages in such imaginative and creative ways. It felt like Tudor truly grasped our client's website needs, complementing our vision flawlessly. Reliable, professional, and incredibly easy to collaborate with, Tudor earns my highest recommendation. We're eager to keep our collaboration going strong!"
 timeline:
   - 1:
