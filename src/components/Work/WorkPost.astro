@@ -9,7 +9,7 @@ let short_description = description ? description.replace(/(.{85})..+/, '$1...')
 
 <article class="rounded-2xl border border-slate-200">
 	<a href={url}>
-		<img class="h-60 w-full rounded-2xl object-cover p-2" alt={img.alt} src={img.src} />
+		<img class="h-60 w-full rounded-2xl object-cover p-2" alt={img.alt} src={img.src} loading="lazy" decoding="async">
 	</a>
 	<div class="flex flex-col gap-2 p-5 pt-3">
 		<div class="flex flex-col gap-2">
