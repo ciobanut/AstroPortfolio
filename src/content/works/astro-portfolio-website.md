@@ -13,7 +13,7 @@ client:
   name: 'Ciobanu Tudor'
   logo: '/favicon.svg'
 business_niche: 'freelance'
-deadline: 'one month'
+deadline: 'two month'
 stacks:
   - 'astro'
   - 'tailwindcss'
@@ -21,16 +21,19 @@ languages:
   - 'html5'
   - 'markdown'
   - 'javascript'
-  - 'typescript'
 timeline:
   - 1:
-    date: '28 septembre 2023'
-    title: 'I started to learn Astro framework'
-    desc: "I chose to go on a new path. I didn't want to do it through WordPress like I was doing until now."
-  - 2:
-    date: '30 septembre 2023'
-    title: 'I build the design'
-    desc: ''
+    date: '30 september 2023'
+    title: 'I started to create the website'
+    desc: 'My goal was to create a website portfolio as a web developer. I wanted to reflect my skills and experience in a clear and concise way.'
+  - 98:
+    date: '20 november 2023'
+    title: 'Website has been deployed'
+    desc: 'My goal was to create a website portfolio as a web developer. I wanted to reflect my skills and experience in a clear and concise way.'
+  - 99:
+    date: 'even now'
+    title: 'Maintenance and ongoing improvements'
+    desc: 'My goal was to create a website portfolio as a web developer. I wanted to reflect my skills and experience in a clear and concise way.'
 ---
 
 The main objective is to create a portfolio website that showcases some of Tudor's work in an attractive and concise way. It must also be clear to the visitor which programming languages Tudor knows. Also, the site should load as quickly as possible.
