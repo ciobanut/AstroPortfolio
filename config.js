@@ -4,7 +4,7 @@ export default {
 	url: 'http://localhost:4321',
 	logo: '/path/to/logo.png',
 	contactInfo: {
-		email: 'Tudor@example. com',
+		email: 'Tudor@example.com',
 		phone: '+1234567890'
 		// other contact info
 	},

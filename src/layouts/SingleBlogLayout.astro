@@ -1,0 +1,45 @@
+---
+const { frontmatter } = Astro.props
+
+import BaseLayout from './Base/BaseLayout.astro'
+import CardArticle from '@components/Single/CardArticle.astro'
+import CallToAction from '@components/HomePageSections/CallToAction.astro'
+import IconList from '@components/IconList.astro'
+import TimeLineItem from '@components/Single/TimeLineItem.astro'
+import Button from '@components/Form/Button.astro'
+import FlexColGap5 from '@components/FlexColGap5.astro'
+import SimplePost from '@components/SimplePost.astro'
+
+const PostsPerPage = 3
+
+import { getCollection } from 'astro:content'
+
+---
+
+<BaseLayout pageTitle={frontmatter.title}>
+	<article class="flex flex-col gap-14">
+		<FlexColGap5>
+		
+			<img
+				src={frontmatter.image.src}
+				width="820"
+				alt={frontmatter.image.alt || ' '}
+				class="w-full rounded-2xl object-cover"
+				transition:persist={frontmatter.image.src} 
+			/>
+			<h1 class="text-2xl font-bold leading-tight tracking-tight text-slate-900">
+				{frontmatter.title}
+			</h1>
+			<p class="text-md font-normal leading-relaxed text-slate-600 sm:text-lg">
+				{frontmatter.description}
+			</p>
+
+			<div class="prose prose-slate max-w-none">
+				<slot />
+			</div>
+		</FlexColGap5>
+
+	</article>
+
+	<CallToAction />
+</BaseLayout>

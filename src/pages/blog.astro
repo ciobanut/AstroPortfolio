@@ -1,0 +1,21 @@
+---
+import BaseLayout from "@layouts/Base/BaseLayout.astro";
+import Header from "@components/Section/Header.astro";
+import GetBlogArticles from '@components/Blog/GetBlogArticles.astro'
+
+
+const pageTitle = "Blog";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <section>
+    <Header
+      title="Blog"
+      icon="PhNotebook"
+    />
+
+    <GetBlogArticles />
+
+
+  </section>
+</BaseLayout>

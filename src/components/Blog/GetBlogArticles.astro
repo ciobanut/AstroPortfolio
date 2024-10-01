@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content'
+import { Image } from 'astro:assets'
+import BlogPost from '@components/Blog/BlogPost.astro'
+let { PostsPerPage } = Astro.props
+
+
+const blog = (
+	await getCollection('blog', ({ data }) => {
+		return data.isDraft !== true
+	})
+)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, PostsPerPage)
+---
+
+<div class="grid gap-5 sm:grid-cols-1 sm:gap-6 ">
+	{
+		blog.map((post) => (
+			<BlogPost
+				url={`/blog/${post.slug}`}
+				tags={post.data.tags}
+				key={post.id}
+				description={post.data.description}
+				title={post.data.title}
+				img={post.data.image}
+			/>
+		))
+	}
+
+	<slot />
+</div>

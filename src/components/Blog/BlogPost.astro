@@ -1,0 +1,30 @@
+---
+import { Icon } from 'astro-icon'
+import Button from '@components/Form/Button.astro'
+import Tooltip from '@components/Tooltip.astro'
+
+let { url, title, year, img, description, tags, languages } = Astro.props
+let short_description = description ? description.replace(/(.{199})..+/, '$1...') : ''
+---
+
+<article class="rounded-2xl border border-slate-200 hover:border-slate-300 ">
+	<div class="flex flex-col p-5">
+		<div class="flex flex-col gap-2">
+
+			<a href={url}>
+				<img class="h-84 w-full rounded-2xl object-cover" alt={img.alt} src={img.src} decoding="async"  transition:persist={img.src}>
+			</a>
+			<a href={url}>
+				<h4 class="pr-1 text-xl font-medium tracking-tight text-slate-800">
+					{title}
+				</h4>
+			</a>
+
+			<p class=" font-normal text-slate-500">
+				{short_description}
+			</p>
+
+		</div>
+
+	</div>
+</article>

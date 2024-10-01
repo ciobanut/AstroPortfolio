@@ -4,15 +4,12 @@ const fontFamily = defaultTheme.fontFamily
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+	mode: 'jit',
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
-		fontFamily: {
-			// Array format:
-			sans: ['"Proxima Nova"', ...defaultTheme.fontFamily.sans]
-		},
 		extend: {
 			fontFamily: {
-				sans: ['InterVariable', 'Inter', ...defaultTheme.fontFamily.sans],
+				sans: ['Inter', ...defaultTheme.fontFamily.sans],
 
 				//   'hand': ['Fuggles'],
 				hand: ['"Comforter"']

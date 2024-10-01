@@ -37,38 +37,38 @@ const works = (
 
 		<FlexColGap5>
 			<section class="grid grid-cols-12 grid-rows-2 gap-4">
-				<CardArticle classNames="items-center col-span-12 sm:col-span-4 row-span-2">
-					<img src={frontmatter.client.logo} alt={frontmatter.client.name} />
+				<CardArticle classNames="items-center col-span-12 sm:col-span-4 row-span-2 max-h-52 md:max-h-72">
+					<img src={frontmatter.client.logo} alt={frontmatter.client.name} class="max-h-full"/>
 				</CardArticle>
-				<CardArticle classNames="col-span-4">
+				<CardArticle classNames="col-span-6 sm:col-span-4">
 					<h4 class="text-2xl font-semibold tracking-tight text-slate-900">
 						{frontmatter.year}
 					</h4>
-					<p class="text-md font-normal text-slate-500">Year</p>
+					<p class="text-sm text-slate-500">Year</p>
 				</CardArticle>
-				<CardArticle classNames="col-span-4">
+				<CardArticle classNames="col-span-6 sm:col-span-4">
 					<h4 class="text-2xl font-semibold tracking-tight text-slate-900">
 						{frontmatter.deadline}
 					</h4>
-					<p class="text-md font-normal text-slate-500">Deadline</p>
+					<p class="text-sm text-slate-500">Deadline</p>
 				</CardArticle>
 
-				<CardArticle classNames="col-span-4">
+				<CardArticle classNames="col-span-6 sm:col-span-4">
 					<div class="flex gap-2">
 						<IconList stacks={frontmatter.stacks} />
 					</div>
 
-					<p class="text-md font-normal text-slate-500">Stack</p>
+					<p class="text-sm text-slate-500">Stack</p>
 				</CardArticle>
 
 				{
 					frontmatter.languages && (
-						<CardArticle classNames="col-span-4">
+						<CardArticle classNames="col-span-6 sm:col-span-4">
 							<div class="flex gap-2">
 								<IconList stacks={frontmatter.languages} />
 							</div>
 
-							<p class="text-md font-normal text-slate-500">Languages</p>
+							<p class="text-sm text-slate-500">Languages</p>
 						</CardArticle>
 					)
 				}
