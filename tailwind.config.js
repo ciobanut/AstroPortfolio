@@ -10,6 +10,7 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				sans: ['Inter', ...defaultTheme.fontFamily.sans],
+				serif: ['Source Serif Pro', ...defaultTheme.fontFamily.serif],
 
 				//   'hand': ['Fuggles'],
 				hand: ['"Comforter"']

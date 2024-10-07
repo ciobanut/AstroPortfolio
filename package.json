@@ -25,6 +25,7 @@
 		"@babel/runtime": "^7.23.2",
 		"@fontsource/comforter": "^5.0.17",
 		"@fontsource/inter": "^5.0.15",
+		"@fontsource/source-serif-pro": "^5.1.0",
 		"astro-capo": "github:natemoo-re/astro-capo",
 		"astro-favicons": "^1.2.0",
 		"astro-icon": "^0.8.1",
