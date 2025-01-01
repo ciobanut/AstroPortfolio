@@ -13,13 +13,13 @@ export default defineConfig({
 		tailwind(),
 
 		favicons({
-			masterPicture: './src/assets/favicon.avif',
+			masterPicture: './src/assets/favicon.svg',
 			emitAssets: true,
 
 			// You should adjust the following options accordingly
-			appName: '',
-			appShortName: '',
-			appDescription: '',
+			appName: 'CiobanuT',
+			appShortName: 'CiobanuT',
+			appDescription: "Ciobanu Tudor's portfolio",
 			// dir:"auto",
 			lang: 'en-US',
 			// display: "standalone",
