@@ -2,6 +2,7 @@
 import BaseLayout from "@layouts/Base/BaseLayout.astro";
 import Header from "@components/Section/Header.astro";
 import ContactForm from "@components/Form/ContactForm.astro";
+import StackCard from "@components/Stack/StackCard.astro";
 
 const pageTitle = "Contact";
 ---
@@ -15,20 +16,6 @@ const pageTitle = "Contact";
     />
 
 
-	<div class=" text-gray-900 flex justify-between my-12 flex-col md:flex-row gap-3">
-		<div class="flex flex-col">
-			<div class=" text-gray-500 md:text-l dark:text-gray-400">Email</div>
-			<div class="font-medium">iofesty@gmail.com</div>
-		</div>
-		<div class="flex flex-col">
-			<div class=" text-gray-500 md:text-l dark:text-gray-400">Address</div>
-			<div class="font-medium">s.Frumoasa, Calarasi, Moldova</div>
-		</div>
-		<div class="flex flex-col">
-			<div class=" text-gray-500 md:text-l dark:text-gray-400">Phone number</div>
-			<div class="font-medium">+373 611 89 770</div>
-		</div>
-	</div>
 
     <ContactForm />
 
