@@ -1,0 +1,203 @@
+---
+layout: '../../layouts/SingleBlogLayout.astro'
+title: 'How I Implemented Avatar Uploads with Livewire, FilePond, and Laravel MediaLibrary?'
+description: ''
+isDraft: false
+pubDate: '15-03-2025'
+image:
+  src: '/images/blog/laravel.avif'
+  alt: 'laravel'
+tags:
+  - 'laravel'
+  - 'Livewire'
+  - 'FilePond'
+  - 'MediaLibrary'
+  - 'Uploads'
+---
+
+
+
+#### Introduction
+As part of the [MyPrivateOrder](https://myprivateorder.com) project, I was tasked with adding functionality that allows users to set a custom avatar in their account settings panel. Since this is a project built on **Laravel** + **Livewire**, I decided to use the **Spatie Livewire Filepond** library (for file upload management) and **Spatie Laravel MediaLibrary** (for storing and organizing files, not just avatars).
+
+Although the official documentation for these libraries is detailed, I encountered a specific issue that wasn’t covered in the examples provided. Below, I’ll describe my implementation process and how I overcame this challenge.
+
+---
+
+#### Choosing the Tools
+1. **Livewire**: The framework that powers the interactive elements of my project.
+2. **Spatie Livewire-FilePond**: An extension that integrates FilePond with Livewire.
+3. **Spatie Laravel MediaLibrary**: A library for managing files and organizing them into collections.
+
+---
+
+#### Implementing the Functionality
+I followed the steps outlined in the official documentation to integrate these libraries. However, I got stuck when trying to save the temporary file uploaded by FilePond into the user's "avatar" collection using MediaLibrary.
+
+---
+
+#### Identifying the Problem
+The initial code I tried looked like this:
+
+```php
+$this->user
+    ->addMedia($this->file)
+    ->toMediaCollection('avatar');
+```
+
+This generated the following error:
+```
+File `livewire-tmp/nKdx5OqSWbHo7ysSTdkoPKOFqcuOlx-metaaW1nICg1KSgxKS5qcGc=-.jpg` does not exist
+```
+
+After extensive research on Google and consulting AI tools, I couldn’t find a direct solution. I had to analyze the problem step by step and understand the internal behavior of the libraries.
+
+---
+
+#### The Solution Found
+The issue was that `$this->file` represented a temporary object created by Livewire in the `livewire-tmp` directory. This temporary file could not be accessed directly by MediaLibrary, for reasons still unclear to me (I’d appreciate any insights). To resolve this, I decided to copy the temporary file into another temporary directory (`avatars-tmp`) and then add it to the MediaLibrary collection.
+
+Here's how I did it:
+
+```php
+
+    public function save()
+    {
+        $this->validate(); // Validate the uploaded file before saving.
+
+        // Save the temporary file into the /avatars-tmp directory. The file will later be moved by addMediaFromDisk().
+        $tmp_avatar_path = $this->file->store('/avatars-tmp');
+
+        // Add the file to the user's 'avatar' collection using MediaLibrary.
+        $this->user
+            ->addMediaFromDisk($tmp_avatar_path) // Move the file from the temporary location to the MediaLibrary collection.
+            ->toMediaCollection('avatar');
+
+        // Optionally, display a success notification...
+    }
+    
+```
+
+---
+
+#### Explanation of the Solution
+1. **File Validation**: I use the `$this->validate()` method to ensure the file is a valid image and meets the maximum size limit.
+2. **Temporary Storage**: The temporary file from `livewire-tmp` is moved to a separate temporary directory (`avatars-tmp`). This step is necessary because it return the variable `$tmp_avatar_path` with path to temporary file that can be accessed directly by MediaLibrary.
+3. **Adding to MediaLibrary**: I use the `addMediaFromDisk()` method to add the file from the temporary directory into the user's "avatar" collection. Importantly, this method **moves** the file to its final location, eliminating the need for manual deletion.
+
+---
+
+#### Here’s the final code for the Livewire component:
+
+```php
+<?php
+
+namespace App\Livewire\EditProfile;
+
+use Livewire\Component;
+use Livewire\Attributes\Rule; // Used for validating fields in Livewire.
+use Livewire\Attributes\On; // Used to listen to events emitted by other components or libraries.
+use App\Models\User; // The Laravel User model, used for managing users.
+use Spatie\LivewireFilepond\WithFilePond; // Trait for integrating FilePond with Livewire.
+
+class UploadAvatar extends Component
+{
+    use WithFilePond; // Integrating the WithFilePond trait for additional functionality.
+
+    public User $user; // Variable representing the current user. It is injected or set externally.
+
+    #[Rule('required|image|mimes:jpeg,png,jpg,gif,webp|max:10240')] // Validate the uploaded file as an image and limit its size to 10MB.
+    public $file; // Variable that stores the temporary file uploaded via FilePond.
+
+    /**
+     * The mount() method is automatically called when the component is initialized.
+     * Check if the user already has an avatar and preload it into the $file variable.
+     */
+    public function mount()
+    {
+        if ($this->user->hasMedia('avatar')) {  
+            $this->file = $this->user->getFirstMediaUrl('avatar'); // Get the URL of the existing avatar and assign it to $file.
+        }
+    }
+    
+    public function render()
+    {
+        return view('livewire.upload-avatar');
+    }
+
+    /**
+     * The validateUploadedFile() method validates the uploaded file using the rules defined in the Rule attribute.
+     * Returns true if validation is successful.
+     */
+    public function validateUploadedFile()
+    {
+        $this->validate(); // Call the validate() method from Livewire to validate the file.
+        return true;
+    }
+
+    /**
+     * The save() method is called when FilePond emits the 'filepond-upload-finished' event.
+     * Saves the uploaded file into the user's 'avatar' collection using MediaLibrary.
+     */
+    #[On('filepond-upload-finished')]
+    public function save()
+    {
+        $this->validate(); // Validate the uploaded file before saving.
+
+        // Save the temporary file into the /avatars-tmp directory. The file will later be moved by addMediaFromDisk().
+        $tmp_avatar_path = $this->file->store('/avatars-tmp');
+
+        // Add the file to the user's 'avatar' collection using MediaLibrary.
+        $this->user
+            ->addMediaFromDisk($tmp_avatar_path) // Move the file from the temporary location to the MediaLibrary collection.
+            ->toMediaCollection('avatar');
+
+        // Optionally, display a success notification...
+    }
+
+    /**
+     * The delete() method is called when FilePond emits the 'filepond-upload-file-removed' event.
+     * Deletes the user's avatar from the 'avatar' collection.
+     */
+    #[On('filepond-upload-file-removed')]
+    public function delete()
+    {
+        $this->user->clearMediaCollection('avatar'); // Delete all files from the 'avatar' collection.
+
+        // Optionally, display a success notification... 
+    }
+}
+```
+#### Registering the "avatar" Collection in the User Model
+
+```php
+public function registerMediaCollections(): void
+{
+    $this
+        ->addMediaCollection('avatar')
+        ->useFallbackUrl('/images/avatar-empty.avif')
+        ->useFallbackPath(public_path('/images/avatar-empty.avif'))
+        ->singleFile();
+}
+```
+
+**Blade Template**:
+For styling, I use Tailwind CSS.
+```html
+<div>
+    <x-filepond::upload 
+            id="avatar"
+            wire:model.live="file" class="border-2 border-base-300 rounded-lg overflow-hidden border-dashed"
+                imageCropAspectRatio="1:1"
+                imageResizeTargetWidth="500"
+                imageResizeTargetHeight="500"
+                imageResizeMode="contain"
+                dropOnPage="true"
+                dropOnElement="false"
+            />
+</div>
+```
+
+---
+
+If you encounter the same issue, I hope this solution proves useful. If you have any questions or suggestions, feel free to leave a comment! Or, if you’re interested in collaborating, don’t hesitate to reach out!
