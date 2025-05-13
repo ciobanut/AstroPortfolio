@@ -148,6 +148,8 @@ You should see something like:
 
 ---
 
+I must mention that this is not enough to keep the api-key secret. For example: my laravel application uses `typesense/typesense-instantsearch-adapter` which displays the api-key in the frontend. And in order not to display the main api-key to the public I generated an api-key exclusively for search according to the official documentation.
+
 ## 🧩 Conclusion
 
 While this setup might seem simple, using Docker Secrets with applications that **don’t support `_FILE` variables** requires a little scripting. In the case of Typesense, the only reliable way is to **read the secret using `cat` inside a shell command** at container startup.
