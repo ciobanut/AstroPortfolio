@@ -26,12 +26,18 @@ The official documentation doesn’t directly cover this scenario, and the seemi
 At first, I tried something simple almost like in <a href="https://typesense.org/docs/guide/install-typesense.html#docker" target="_blank" rel="noopener noreferrer">official documentation</a>:
 
 ```yaml
-environment:
-  TYPESENSE_API_KEY: abcd123456789
+command: '--api-key=xyz ...'
 ```
 
 ✅ Works for **development**
 ❌ But it’s **insecure** — the key appears in `docker inspect`, logs, and debugging tools, and Github repository.
+
+Next try also not working:
+
+```yaml
+environment:
+  api-key: xyz
+```
 
 So I moved on to a safer method: **Docker Secrets**.
 
